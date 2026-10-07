@@ -1,4 +1,4 @@
-package com.brayan_guilherme.sagsa;
+package com.brayan_guilherme;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
