@@ -30,7 +30,7 @@ public class UserController {
      * Rota: GET http://localhost:8080/usuario/{id}
      */
     @GetMapping("/{id}")
-    public ResponseEntity<User> findById(@PathVariable Long id) {
+    public ResponseEntity<User> findById(@PathVariable Integer id) {
         // Busca o usuário na camada de serviço utilizando o ID enviado pela URL
         User obj = this.userService.findById(id);
         // Retorna HTTP status 200 OK com o objeto Usuário no corpo da resposta
@@ -59,7 +59,7 @@ public class UserController {
      * Rota: PUT http://localhost:8080/usuario/{id}
      */
     @PutMapping("/{id}")
-    public ResponseEntity<Void> update(@RequestBody User obj, @PathVariable Long id) {
+    public ResponseEntity<Void> update(@RequestBody User obj, @PathVariable Integer id) {
         // Associa o ID vindo da URL ao objeto recebido no corpo da requisição
         obj.setId(id);
         // Executa a atualização na camada de serviço
@@ -74,7 +74,7 @@ public class UserController {
      * Rota: DELETE http://localhost:8080/usuario/{id}
      */
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> delete(@PathVariable Long id) {
+    public ResponseEntity<Void> delete(@PathVariable Integer id) {
         // Solicita a exclusão do registro à camada de serviço
         this.userService.delete(id);
         // Retorna HTTP status 204 No Content

@@ -19,7 +19,7 @@ import org.springframework.stereotype.Repository;
  */
 @Repository // Indica que a interface é um repositório Spring (opcional quando se estende
             // JpaRepository)
-public interface UserRepository extends JpaRepository<User, Long> {
+public interface UserRepository extends JpaRepository<User, Integer> {
 
     // O Spring Data JPA disponibiliza nativamente sem necessidade de implementar:
     // - save(User user) -> Insere ou atualiza um utilizador na base de dados

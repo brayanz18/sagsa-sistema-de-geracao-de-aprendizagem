@@ -35,7 +35,7 @@ public class SapzController {
      * @return Objeto Sapz encapsulado em um ResponseEntity com HTTP 200 (OK)
      */
     @GetMapping("/{id}")
-    public ResponseEntity<Sapz> findById(@PathVariable Long id) {
+    public ResponseEntity<Sapz> findById(@PathVariable Integer id) {
         // Executa a consulta na camada de serviço utilizando o ID vindo da URL
         Sapz obj = this.sapzService.findById(id);
         // Retorna o status HTTP 200 OK com o objeto localizado no corpo da resposta
@@ -51,7 +51,7 @@ public class SapzController {
      * @return Lista de registros Sapz com HTTP 200 (OK)
      */
     @GetMapping("/user/{userId}")
-    public ResponseEntity<List<Sapz>> findAllByUserId(@PathVariable Long userId) {
+    public ResponseEntity<List<Sapz>> findAllByUserId(@PathVariable Integer userId) {
         // Solicita ao serviço a lista de registros vinculados ao ID do usuário
         List<Sapz> list = this.sapzService.findAllByUserId(userId);
         // Retorna o status HTTP 200 OK com a lista no corpo da resposta
@@ -86,7 +86,7 @@ public class SapzController {
      * @return Resposta HTTP 204 (No Content) indicando sucesso na alteração
      */
     @PutMapping("/{id}")
-    public ResponseEntity<Void> update(@RequestBody Sapz obj, @PathVariable Long id) {
+    public ResponseEntity<Void> update(@RequestBody Sapz obj, @PathVariable Integer id) {
         // Garante que o ID recebido na URL seja atribuído ao objeto antes de atualizar
         obj.setId(id);
         // Invoca a camada de serviço para atualizar as informações no banco
@@ -103,7 +103,7 @@ public class SapzController {
      * @return Resposta HTTP 204 (No Content) indicando sucesso na exclusão
      */
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> delete(@PathVariable Long id) {
+    public ResponseEntity<Void> delete(@PathVariable Integer id) {
         // Executa a remoção do registro na camada de serviço
         this.sapzService.delete(id);
         // Retorna HTTP 204 No Content

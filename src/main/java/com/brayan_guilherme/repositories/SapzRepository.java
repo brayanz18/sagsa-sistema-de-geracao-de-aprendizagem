@@ -16,7 +16,7 @@ import java.util.List;
  */
 @Repository // Nota: Esta anotação é opcional, pois o Spring Data JPA regista
             // automaticamente interfaces que estendem JpaRepository
-public interface SapzRepository extends JpaRepository<Sapz, Long> {
+public interface SapzRepository extends JpaRepository<Sapz, Integer> {
 
     /**
      * Procura e retorna uma lista de registos Sapz associados a um utilizador
@@ -29,5 +29,5 @@ public interface SapzRepository extends JpaRepository<Sapz, Long> {
      * @param id Identificador do utilizador (User)
      * @return Lista contendo os registos Sapz associados ao ID informado
      */
-    List<Sapz> findByUser_Id(Long id);
+    List<Sapz> findByUser_Id(Integer id);
 }

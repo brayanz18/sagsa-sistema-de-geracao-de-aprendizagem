@@ -19,14 +19,14 @@ public class SapzService {
     @Autowired
     private UserService userService;
 
-    public Sapz findById(Long id) {
+    public Sapz findById(Integer id) {
         Optional<Sapz> sapz = this.sapzRepository.findById(id);
         return sapz.orElseThrow(() -> new RuntimeException(
             "Tarefa não encontrada! Id: " + id + ", Tipo: " + Sapz.class.getName()
         ));
     }
 
-    public List<Sapz> findAllByUserId(Long userId) {
+    public List<Sapz> findAllByUserId(Integer userId) {
         this.userService.findById(userId);
         return this.sapzRepository.findByUser_Id(userId);
     }
@@ -47,7 +47,7 @@ public class SapzService {
     }
 
     @Transactional
-    public void delete(Long id) {
+    public void delete(Integer id) {
         findById(id);
         try {
             this.sapzRepository.deleteById(id);

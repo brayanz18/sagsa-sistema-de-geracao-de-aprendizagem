@@ -44,7 +44,7 @@ public class Sapz {
     @Id // Identifica o atributo como a chave primária da tabela
     @GeneratedValue(strategy = GenerationType.IDENTITY) // Configura o autoincremento gerenciado pelo banco de dados
     @Column(name = "id", unique = true) // Mapeia a coluna "id" definindo unicidade
-    private Long id;
+    private Integer id;
 
     // Relacionamento muitos-para-um (Muitas tarefas/Sapz pertencem a um único
     // utilizador)

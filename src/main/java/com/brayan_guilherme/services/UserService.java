@@ -19,7 +19,7 @@ public class UserService {
     /**
      * Busca um usuário pelo ID ou lança exceção caso não exista
      */
-    public User findById(Long id) {
+    public User findById(Integer id) {
         Optional<User> user = this.userRepository.findById(id);
         return user.orElseThrow(() -> new RuntimeException("Usuário não encontrado! ID: " + id));
     }
@@ -46,7 +46,7 @@ public class UserService {
     /**
      * Exclui o usuário pelo ID
      */
-    public void delete(Long id) {
+    public void delete(Integer id) {
         findById(id); // Valida se o registro existe no banco antes da exclusão
         this.userRepository.deleteById(id);
     }

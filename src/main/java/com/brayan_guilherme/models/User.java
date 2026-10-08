@@ -4,7 +4,7 @@ package com.brayan_guilherme.models;
 import jakarta.persistence.*;
 
 /**
- * List<Sapz> findByUser_Id(Long id);
+ * List<Sapz> findByUser_Id(Integer id);
  * Entidade Java 'User' vinculada à tabela oficial 'usuario' do banco de dados
  * sagsa_db
  */
@@ -15,7 +15,7 @@ public class User {
     @Id // Marca o atributo 'id' como chave primária da tabela
     @GeneratedValue(strategy = GenerationType.IDENTITY) // Configura como AUTO_INCREMENT no MySQL
     @Column(name = "id_matricula") // Mapeia o atributo 'id' para a coluna física 'id_matricula'
-    private Long id;
+    private Integer id;
 
     private String nome; // Mapeia a coluna 'nome'
     private String email; // Mapeia a coluna 'email'
@@ -30,7 +30,7 @@ public class User {
     }
 
     // Construtor parametrizado para facilitar a criação manual de objetos
-    public User(Long id, String nome, String email, String senhaHash, String perfil) {
+    public User(Integer id, String nome, String email, String senhaHash, String perfil) {
         this.id = id;
         this.nome = nome;
         this.email = email;
@@ -41,11 +41,11 @@ public class User {
     // --- Getters e Setters (necessários para acesso aos atributos pela aplicação)
     // ---
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
