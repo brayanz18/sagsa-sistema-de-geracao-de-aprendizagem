@@ -38,7 +38,7 @@ import java.util.Objects; // Utilitário Java para operações com objetos (ex: 
 public class Sapz {
 
     // Constante que armazena o nome oficial da tabela no banco de dados
-    public static final String TABLE_NAME = "task";
+    public static final String TABLE_NAME = "sapz";
 
     // Mapeamento da chave primária (ID)
     @Id // Identifica o atributo como a chave primária da tabela
