@@ -4,42 +4,50 @@ import com.brayan_guilherme.models.User;
 import com.brayan_guilherme.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
 
-@Service
+/**
+ * Camada de serviço contendo as regras de negócio para a entidade Usuário
+ */
+@Service // Registra a classe como um componente de serviço Spring
 public class UserService {
 
-    @Autowired
+    @Autowired // Injeta a dependência do repositório
     private UserRepository userRepository;
 
+    /**
+     * Busca um usuário pelo ID ou lança exceção caso não exista
+     */
     public User findById(Long id) {
         Optional<User> user = this.userRepository.findById(id);
-        return user.orElseThrow(() -> new RuntimeException(
-            "Utilizador não encontrado! Id: " + id + ", Tipo: " + User.class.getName()
-        ));
+        return user.orElseThrow(() -> new RuntimeException("Usuário não encontrado! ID: " + id));
     }
 
-    @Transactional
+    /**
+     * Persiste um novo usuário
+     */
     public User create(User obj) {
-        obj.setId(null);
+        obj.setId(null); // Garante que o ID é nulo para acionar o AUTO_INCREMENT
         return this.userRepository.save(obj);
     }
 
-    @Transactional
+    /**
+     * Atualiza dados de um usuário existente
+     */
     public User update(User obj) {
-        User newObj = findById(obj.getId());
-        newObj.setPassword(obj.getPassword());
+        User newObj = findById(obj.getId()); // Verifica a existência antes de alterar
+        newObj.setNome(obj.getNome());
+        newObj.setEmail(obj.getEmail());
+        newObj.setPerfil(obj.getPerfil());
         return this.userRepository.save(newObj);
     }
 
+    /**
+     * Exclui o usuário pelo ID
+     */
     public void delete(Long id) {
-        findById(id);
-        try {
-            this.userRepository.deleteById(id);
-        } catch (Exception e) {
-            throw new RuntimeException("Não é possível eliminar pois existem entidades relacionadas!");
-        }
+        findById(id); // Valida se o registro existe no banco antes da exclusão
+        this.userRepository.deleteById(id);
     }
 }
